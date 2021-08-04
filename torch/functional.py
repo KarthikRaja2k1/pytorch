@@ -331,10 +331,10 @@ def einsum(*args):
 if TYPE_CHECKING:
     # The JIT doesn't understand Union, so only add type annotation for mypy
     def meshgrid(*tensors: Union[Tensor, List[Tensor]],
-                 indexing: str = '') -> Tuple[Tensor, ...]:
+                 indexing: str = 'xy') -> Tuple[Tensor, ...]:
         return _meshgrid(*tensors, indexing=indexing)
 else:
-    def meshgrid(*tensors, indexing: str = '') -> Tuple[Tensor, ...]:
+    def meshgrid(*tensors, indexing: str = 'xy') -> Tuple[Tensor, ...]:
         r"""Creates grids of coordinates specified by the 1D inputs in `attr`:tensors.
 
         This is helpful when you want to visualize data over some

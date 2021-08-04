@@ -2140,12 +2140,6 @@ std::vector<Tensor> unbind(const Tensor& self, Dimname dim) {
 
 std::vector<Tensor> meshgrid(TensorList tensors,
                              c10::string_view indexing) {
-  TORCH_CHECK(indexing != "",
-              "torch.meshgrid: the \"indexing\" parameter is required. The "
-              "default value was \"ij\", so pass indexing='ij' to keep the "
-              "existing behavior. In a future release of PyTorch the default "
-              "will become \"xy\".");
-
   int64_t size = tensors.size();
   TORCH_CHECK(size > 0, "meshgrid expects a non-empty TensorList");
 
